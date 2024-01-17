@@ -16,8 +16,9 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 
 export default function LoginForm() {
-  //  adding materi 15 // Auth
-  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  // adding materi 15 // Auth
+  // jika var AUTH_SECRET in .env tidak ada // "undefined"
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined); 
 
   return (
     <form action={dispatch} className="space-y-3">
