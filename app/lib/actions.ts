@@ -5,10 +5,14 @@ import { z } from 'zod'; // Zod, a TypeScript-first validation library
 // Inserting the data into your database - 01
 import { sql } from '@vercel/postgres';
 
-// Revalidate and redirect
+// // adding materi 12 // Revalidate and redirect
 import { revalidatePath } from 'next/cache'; 
 import { redirect } from 'next/navigation';
- 
+
+// adding materi 15 // Auth
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+
 // adding materi 12 // creating
 /*
 const FormSchema = z.object({
@@ -136,3 +140,22 @@ export async function deleteInvoice(id: string) {
     
     revalidatePath('/dashboard/invoices');
 }
+
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+  ) {
+    try {
+      await signIn('credentials', formData);
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case 'CredentialsSignin':
+            return 'Invalid credentials.';
+          default:
+            return 'Something went wrong.';
+        }
+      }
+      throw error;
+    }
+  }

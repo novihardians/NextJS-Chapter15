@@ -5,6 +5,7 @@ import styles from '@/app/ui/home.module.css'; // adding materi 2
 import { lusitana } from '@/app/ui/fonts'; // adding materi 3
 import Image from 'next/image'; // adding materi 3
 
+
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
